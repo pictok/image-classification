@@ -10,7 +10,7 @@ export default function SearchBar() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`?imgurl=${search}`);
+    router.push(`?query=${search}`);
   };
 
   return (
