@@ -5,11 +5,11 @@ import ImageResults from "@/components/ImageResults";
 export default async function Imagga({
   searchParams,
 }: {
-  searchParams: { imgurl?: string };
+  searchParams: { query?: string };
 }) {
-  const { imgurl: imgUrl } = searchParams;
+  const { query } = searchParams;
 
-  if (!imgUrl)
+  if (!query)
     return (
       <div>
         <h1 className="text-center font-bold text-6xl mb-6">Imagga</h1>
@@ -17,7 +17,7 @@ export default async function Imagga({
       </div>
     );
 
-  const imgResults = await classifyImage(imgUrl);
+  const imgResults = await classifyImage(query);
 
   if (!imgResults || !imgResults.result) return <div>Loading...</div>;
 
@@ -32,7 +32,7 @@ export default async function Imagga({
     <div>
       <h1 className="text-center font-bold text-6xl mb-6">Imagga</h1>
       <SearchBar />
-      <ImageResults imageUrl={imgUrl} categories={categories} />
+      <ImageResults imageUrl={query} categories={categories} />
     </div>
   );
 }
